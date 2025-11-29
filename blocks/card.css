@@ -1,17 +1,27 @@
 .card{
-  width: 413px;
+  width: 100%;
+  max-width: 413px;
 }
 
 .card__image{
-  height:413px;
   width: 100%;
+  height: 413px;
   object-fit: cover;
   display: block;
-  border-radius: 10px;
+  border-radius: 8px;
+  margin-bottom: 12px;
 }
 
 .card__title{
   color: #212121;
+  font-style: 20px;
+  line-height: 1.2;
+  font-weight: 500;
+  margin: 0;
+  max-width: 353px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
 }
 
@@ -29,10 +39,21 @@
   background-color: transparent;
   opacity: 40%;
   cursor: pointer;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
+.card__like-btn:hover { opacity: 0.8; }
 
 @media  screen and (max-width:627px) {
   .card__image{
     height: 288px;
+  }
+  .card__title{
+    max-width: 235px;
+  }
+  .card{
+    max-width: 288px;
   }
 }

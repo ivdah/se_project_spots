@@ -9,7 +9,7 @@
   height: 190px;
   width: 190px;
   margin-right: 20px;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 .profile__column{
@@ -23,9 +23,13 @@
   font-weight: 500;
   font-size: 32px;
   line-height: 1;
+  color: #212121;
   text-overflow: ellipsis;
   overflow: hidden;
   display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  -webkit-box: hidden;
   -webkit-line-orient: vertical;
   max-width: 420px;
 }
@@ -35,14 +39,17 @@
   font-family: 'poppins', sans-serif;
   margin: 0;
   width: 97px;
-  height: 16px;
-  color: #212121;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 500;
+  color: #212121B2;
   opacity: 70%;
   text-overflow: ellipsis;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-orient: vertical;
   max-width: 420px;
+  -webkit-line-clamp: 3;
 }
 
 .profile__edit-btn{
@@ -50,18 +57,26 @@
   margin-top: auto;
   background: none;
   border: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #212121;
+  display: flex;
+  gap: 8px;
+  align-items: center;
   padding: 0;
   cursor: pointer;
   font-size: 1.2rem;
   font-weight: 400;
-  color: #4b3b2b;
   text-align: left;
 }
+.profile__edit-btn:hover { opacity: 0.7; }
 
 .profile__add-btn{
   font-family: 'poppins', sans-serif;
-  height: 59px;
+  height: 52px;
   width: 149px;
+  border-radius: 8px;
+  margin-left: auto;
   margin: 138px 0px 0px auto;
   background-color: black;
   color: white;
@@ -69,6 +84,8 @@
   cursor: pointer;
   padding: 10px 20px;
 }
+
+ .profile__add-btn:hover { opacity: 0.7; }
 
 @media screen and (max-width: 627px){
   .profile{
@@ -85,7 +102,7 @@
   }
 
   .profile__name{
-    font-style: 20px;
+    font-size: 20px;
     margin: 0 0 6px;
     max-width: 288px;
 
