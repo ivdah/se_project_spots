@@ -2,6 +2,7 @@
   font-family: 'poppins', sans-serif;
   padding: 20px 0 40px;
   border-bottom: 1px solid #21212166;
+  max-width: 288px;
 
 }
 
@@ -19,5 +20,7 @@
 @media  screen and (max-width:627px) {
   .cards__list{
   grid-template-columns: repeat(auto-fit, 288px);
+  gap: 20px;
   }
+
 }

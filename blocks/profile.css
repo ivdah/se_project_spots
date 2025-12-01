@@ -42,7 +42,7 @@
   font-size: 16px;
   line-height: 1;
   font-weight: 500;
-  color: #212121B2;
+  color: #212121;
   opacity: 70%;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -78,7 +78,8 @@
   border-radius: 8px;
   margin-left: auto;
   margin: 138px 0px 0px auto;
-  background-color: black;
+  background-color: #212121;
+
   color: white;
   border-radius: 10px;
   cursor: pointer;
@@ -123,4 +124,5 @@
     margin: 0;
     width: 100%;
   }
+
 }
