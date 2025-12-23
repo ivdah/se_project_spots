@@ -29,8 +29,6 @@
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  -webkit-box: hidden;
-  -webkit-line-orient: vertical;
   max-width: 420px;
 }
 
@@ -38,11 +36,11 @@
 .profile__description{
   font-family: 'poppins', sans-serif;
   margin: 0;
-  width: 97px;
+  max-width: 420px;
   font-size: 16px;
   line-height: 1;
   font-weight: 500;
-  color: #212121;
+  color: #212121B2;
   opacity: 70%;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -57,8 +55,6 @@
   margin-top: auto;
   background: none;
   border: none;
-  font-size: 16px;
-  font-weight: 500;
   color: #212121;
   display: flex;
   gap: 8px;
@@ -81,7 +77,6 @@
   background-color: #212121;
   border: none;
   color: white;
-  border-radius: 10px;
   cursor: pointer;
   padding: 10px 20px;
 }
