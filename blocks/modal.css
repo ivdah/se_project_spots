@@ -129,4 +129,10 @@
   font-family: 'poppins', Arial, Helvetica, sans-serif;
 
 }
+.modal__title{
+  font-size: 20px;
+}
+.modal__input{
+  font-size: 16px;
+}
 }

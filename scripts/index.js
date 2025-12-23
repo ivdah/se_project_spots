@@ -24,13 +24,13 @@ const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescriptionEl = document.querySelector(".profile__description");
 
-const openModal = function (modal) {
+function openModal(modal) {
   modal.classList.add("modal_is-opened");
-};
+}
 
-const closeModal = function (modal) {
+function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
-};
+}
 
 // Open the edit profile modal and set the values for the input fields
 editProfileBtn.addEventListener("click", function () {
