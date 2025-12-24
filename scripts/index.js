@@ -68,11 +68,11 @@ editProfileForm.addEventListener("submit", handleEditProfileSubmit);
 function handleNewPostSubmit(evt) {
   evt.preventDefault();
 
-  // const newPostImageLink = newPostProfileImageLink.value;
-  // const newPostCaption = newPostProfileCaption.value;
+  //const newPostImageLink = newPostProfileImageLink.value;
+  //const newPostCaption = newPostProfileCaption.value;
 
-  console.log(newPostProfileImageLink);
-  console.log(newPostProfileCaption);
+  console.log(newPostProfileImageLink.value);
+  console.log(newPostProfileCaption.value);
 
   // newPostModal.classList.remove("modal_is-opened");
   closeModal(newPostModal);
