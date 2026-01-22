@@ -91,6 +91,7 @@
             <label for="card-image-input" class="modal__label">
               Image link
               <input
+                required
                 id="card-image-input"
                 type="url"
                 class="modal__input"
@@ -100,6 +101,7 @@
             <label for="profile-caption-input" class="modal__label">
               Caption
               <input
+                required
                 id="profile-caption-input"
                 type="text"
                 class="modal__input"
@@ -115,7 +117,7 @@
         <div class="modal__image-container">
           <button
             type="button"
-            class="modal__close-btn modal__close_type_preview"
+            class="modal__close-btn modal__close-btn_type_preview"
           >
             <img src="./images/close-icon.svg" alt="close" />
           </button>
@@ -124,6 +126,7 @@
         </div>
       </div>
     </div>
+    <script src="./scripts/initialcards.js"></script>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
