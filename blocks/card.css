@@ -14,14 +14,6 @@
   cursor: pointer;
 }
 
-.card__image:hover {
-  opacity: 0.95;
-
-}
-.card__image:focus {
-  opacity: 0.95;
-}
-
 .card__delete-btn{
   width: 32px;
   cursor: pointer;
@@ -29,17 +21,17 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  background-image: url(../images/delete.default.svg);
-  background-color: transparent;
+  background-image: url(../images/delete-default.svg);
+  background-color: rgba(0,0,0,0.3);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 16px 16px;
   border: none;
-
+  border-radius: 50%;
 }
 
 .card__delete-btn:hover {
-  background-image: url(../images/delete.svg);
+  background-color: #ff6565;
 }
 
 .card__title{
