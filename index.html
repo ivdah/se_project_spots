@@ -64,18 +64,28 @@
               <input
                 id="profile-name-input"
                 type="text"
+                minlength="2"
+                maxlength="40"
                 class="modal__input"
                 placeholder="Type your name"
               />
+              <span id="profile-name-input-error" class="modal__error"></span>
             </label>
             <label for="profile-description-input" class="modal__label">
               Description
               <input
                 id="profile-description-input"
                 type="text"
+                minlength="2"
+                maxlength="200"
+                required
                 class="modal__input"
                 placeholder="Describe yourself"
               />
+              <span
+                id="profile-description-input-error"
+                class="modal__error"
+              ></span>
             </label>
             <button type="submit" class="modal__submit-btn">Save</button>
           </form>
@@ -97,6 +107,7 @@
                 class="modal__input"
                 placeholder="Place a link to the picture"
               />
+              <span id="card-image-input-error" class="modal__error"></span>
             </label>
             <label for="profile-caption-input" class="modal__label">
               Caption
@@ -104,9 +115,15 @@
                 required
                 id="profile-caption-input"
                 type="text"
+                minlength="2"
+                maxlength="30"
                 class="modal__input"
                 placeholder="Type your caption"
               />
+              <span
+                id="profile-caption-input-error"
+                class="modal__error"
+              ></span>
             </label>
             <button type="submit" class="modal__submit-btn">Save</button>
           </form>
@@ -126,6 +143,7 @@
         </div>
       </div>
     </div>
-    <script src="./scripts/index.js"></script>
+    <script defer src="./scripts/index.js"></script>
+    <script defer src="./scripts/validation.js"></script>
   </body>
 </html>

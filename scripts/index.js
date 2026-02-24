@@ -24,10 +24,9 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
   },
 ];
-
+// const cardModal = document.
 const editProfileBtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
-
 const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
 
 const editProfileForm = editProfileModal.querySelector(".modal__form");
@@ -38,18 +37,19 @@ const editDescriptionInput = editProfileModal.querySelector(
   "#profile-description-input",
 );
 
+// cardModal -> newPostModal
+// cardSubmitBtn -> newPostModal
+// cardXXXXXX. -> newPostXXXXXXX
 const newPostModal = document.querySelector("#new-post-modal");
-
 const newPostProfileForm = newPostModal.querySelector(".modal__form");
+const newPostSubmitBtn = newPostModal.querySelector(".modal__submit-btn");
 const newPostProfileImageLink = newPostModal.querySelector("#card-image-input");
 const newPostProfileCaption = newPostModal.querySelector(
   "#profile-caption-input",
 );
 
 const newPostBtn = document.querySelector(".profile__add-btn");
-
 const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
-
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescriptionEl = document.querySelector(".profile__description");
 
@@ -103,6 +103,11 @@ function closeModal(modal) {
 editProfileBtn.addEventListener("click", function () {
   editProfileNameInput.value = profileNameEl.textContent;
   editDescriptionInput.value = profileDescriptionEl.textContent;
+  resetValidation(
+    editProfileForm,
+    [editProfileNameInput, editDescriptionInput],
+    settings,
+  );
   openModal(editProfileModal);
 });
 
@@ -137,6 +142,7 @@ function handleNewPostSubmit(evt) {
   const cardElement = getCardElement(inputValue);
   cardsList.prepend(cardElement);
   evt.target.reset();
+  disableButton(newPostSubmitBtn, settings);
   closeModal(newPostModal);
 }
 
