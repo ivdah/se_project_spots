@@ -66,6 +66,9 @@
   text-align: left;
 }
 
+.profile__edit-btn:hover {
+  opacity: 1;
+}
 
 .profile__add-btn{
   font-family: 'poppins', sans-serif;
@@ -79,7 +82,6 @@
   border: none;
   color: white;
   cursor: pointer;
-  opacity: 0.8;
   padding: 10px 20px;
 }
 
