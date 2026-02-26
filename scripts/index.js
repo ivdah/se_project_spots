@@ -94,19 +94,9 @@ function getCardElement(data) {
 
 function handleEscape(evt) {
   if (evt.key === "Escape") {
-    const openModal = document.querySelector(".modal_is_opened");
+    const openModal = document.querySelector(".modal_is-opened");
     closeModal(openModal);
   }
-}
-
-function openModal(modal) {
-  modal.classList.add("modal_is-opened");
-  document.addEventListener("keydown", handleEscape);
-}
-
-function closeModal(modal) {
-  modal.classList.remove("modal_is-opened");
-  document.removeEventListener("keydown", handleEscape);
 }
 
 editProfileBtn.addEventListener("click", function () {

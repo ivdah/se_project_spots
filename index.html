@@ -100,7 +100,7 @@
             <img src="./images/close-icon-black.svg" alt="close" />
           </button>
           <h2 class="modal__title">New post</h2>
-          <form class="modal__form">
+          <form class="modal__form" novalidate>
             <label for="card-image-input" class="modal__label">
               Image link
               <input
@@ -108,6 +108,8 @@
                 id="card-image-input"
                 type="url"
                 class="modal__input"
+                minlength="2"
+                maxlength="30"
                 placeholder="Place a link to the picture"
               />
               <span id="card-image-input-error" class="modal__error"></span>
