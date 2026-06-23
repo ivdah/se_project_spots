@@ -1,13 +1,5 @@
 // Declaring a configuration object that contains the
 // necessary classes and selectors.
-export const settings = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__submit-btn",
-  inactiveButtonClass: "modal__submit-btn_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
 
 // Passing the configuration object to enableValidation when we call it.
 
@@ -79,3 +71,4 @@ export const enableValidation = (config) => {
     setEventListeners(formEl, config);
   });
 };
+export { resetValidation, disableButton };
