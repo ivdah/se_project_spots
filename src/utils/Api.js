@@ -4,6 +4,13 @@ class Api {
     this._headers = headers;
   }
 
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Error: ${res.status}`);
+  }
+
   getAppInfo() {
     return Promise.all([this.getInitialCards(), this.getUserInfo()]);
   }
@@ -11,23 +18,13 @@ class Api {
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error fetching initial cards: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error fetching user info: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   editUserInfo({ name, about }) {
@@ -39,12 +36,7 @@ class Api {
         name,
         about,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error updating user info: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   editUserAvatar({ avatar }) {
@@ -54,12 +46,7 @@ class Api {
       body: JSON.stringify({
         avatar,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error updating avatar: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   addCard({ name, link }) {
@@ -70,25 +57,14 @@ class Api {
         name,
         link,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error adding card: ${res.status}`);
-      // handle the response
-    });
+    }).then(this._checkResponse);
   }
 
   deleteCard({ _id }) {
     return fetch(`${this._baseUrl}/cards/${_id}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error deleting card: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   changeLikeStatus({ _id, isLiked }) {
@@ -96,12 +72,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards/${_id}/likes`, {
       method: method,
       headers: this._headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error changing like status: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 }
 export default Api;

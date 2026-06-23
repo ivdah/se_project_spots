@@ -18,6 +18,8 @@ api
     // Populate user info
     profileNameEl.textContent = UserInfo.name;
     profileDescriptionEl.textContent = UserInfo.about;
+    profileAvatarEl.src = UserInfo.avatar;
+    profileAvatarEl.alt = UserInfo.name;
 
     // Populate cards
     Cards.forEach((item) => {
@@ -73,6 +75,7 @@ const deleteForm = deleteModal.querySelector(".modal__form");
 
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescriptionEl = document.querySelector(".profile__description");
+const profileAvatarEl = document.querySelector(".profile__avatar");
 
 const previewModal = document.querySelector("#preview__type_modal");
 const previewImageEl = previewModal.querySelector(".modal__image");
@@ -86,12 +89,13 @@ const cardTemplate = document
 const cardsList = document.querySelector(".cards__list");
 
 function handlelike(evt, _id) {
-  evt.target.classList.toggle("card__like-btn_active");
-  const isLiked = evt.target.classList.contains("card__like-btn_active");
+  const likeButton = evt.target;
+  const isLiked = likeButton.classList.contains("card__like-btn_active");
+
   api
-    .changeLikeStatus({ _id, isLiked })
+    .changeLikeStatus({ _id, isLiked: !isLiked })
     .then((data) => {
-      evt.target.classList.toggle("card__like-btn_active", data.isLiked);
+      likeButton.classList.toggle("card__like-btn_active", data.isLiked);
     })
     .catch((err) => {
       console.error(`Error updating like status: ${err}`);
@@ -115,25 +119,9 @@ function getCardElement(data) {
 
   cardLikeBtnEl.addEventListener("click", (evt) => handlelike(evt, data._id));
 
-  const likeButton = cardElement.querySelector(".card__like-btn");
-  likeButton.addEventListener("click", (evt) => handlelike(evt, data._id));
-
   const cardDeleteBtnEl = cardElement.querySelector(".card__delete-btn");
   cardDeleteBtnEl.addEventListener("click", () => {
     handleDeleteCard(cardElement, data);
-  });
-
-  const modalDeleteBtn = deleteModal.querySelector(".modal__submit-btn");
-  modalDeleteBtn.addEventListener("click", () => {
-    api.deleteCard({ _id: selectedCardId }).then(() => {
-      selectedCard.remove();
-      closeModal(deleteModal);
-    });
-  });
-
-  const modalCancelBtn = deleteModal.querySelector(".modal__cancel-btn ");
-  modalCancelBtn.addEventListener("click", () => {
-    closeModal(deleteModal);
   });
 
   cardImageEl.addEventListener("click", () => {
@@ -146,13 +134,16 @@ function getCardElement(data) {
   return cardElement;
 }
 
-editProfileForm.addEventListener("submit", handleEditProfileSubmit);
-
 avatarModalBtn.addEventListener("click", () => {
   openModal(avatarModal);
 });
 
 deleteForm.addEventListener("submit", handleDeleteCardSubmit);
+
+const modalCancelBtn = deleteModal.querySelector(".modal__cancel-btn");
+modalCancelBtn.addEventListener("click", () => {
+  closeModal(deleteModal);
+});
 
 modals.forEach((modal) => {
   modal.addEventListener("mousedown", (evt) => {
@@ -248,7 +239,6 @@ function handleAvatarFormSubmit(evt) {
       avatar: avatarLinkInput.value,
     })
     .then((updatedUserInfo) => {
-      const profileAvatarEl = document.querySelector(".profile__avatar");
       profileAvatarEl.src = updatedUserInfo.avatar;
       profileAvatarEl.alt = updatedUserInfo.name;
       closeModal(avatarModal);
@@ -265,10 +255,22 @@ avatarForm.addEventListener("submit", handleAvatarFormSubmit);
 
 function handleDeleteCardSubmit(evt) {
   evt.preventDefault();
-  api.deleteCard({ _id: selectedCardId }).then(() => {
-    selectedCard.remove();
-    closeModal(deleteModal);
-  });
+
+  const submitBtn = evt.submitter;
+  submitBtn.textContent = "Deleting...";
+
+  api
+    .deleteCard({ _id: selectedCardId })
+    .then(() => {
+      selectedCard.remove();
+      closeModal(deleteModal);
+    })
+    .catch((err) => {
+      console.log(`Error deleting card: ${err}`);
+    })
+    .finally(() => {
+      submitBtn.textContent = "Delete";
+    });
 }
 
 function handleDeleteCard(cardElement, data) {
